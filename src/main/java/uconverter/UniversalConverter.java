@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class UniversalConverter {
-    private List<UnitConverter> converters = Arrays.asList(
-            new CelsiusUnitConverter(), //0
-            new FahrenheitUnitConverter(), //1
-            new KelvinUnitConverter() //2
+    private final List<UnitConverter> converters = Arrays.asList(
+            new CelsiusUnitConverter(),
+            new FahrenheitUnitConverter(),
+            new KelvinUnitConverter()
     );
     private UnitConverter sourceConverter;
     private UnitConverter targetConverter;
@@ -33,7 +33,8 @@ public class UniversalConverter {
 
     @Command
     public double convert(double value) {
-        return 0;
+        double si = sourceConverter.toSI(value);
+        return targetConverter.fromSI(si);
     }
 }
 
